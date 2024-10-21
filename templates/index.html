@@ -6,36 +6,75 @@
     <title>Medical Chatbot - Dr. Sanjay Kumar Yadav</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
             padding: 20px;
+            margin: 0;
         }
         .chat-container {
             max-width: 600px;
             margin: auto;
-            background-color: white;
+            background-color: #fff;
             padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        h2 {
+            color: #007bff;
+            text-align: center;
         }
         .chat-box {
-            height: 300px;
+            height: 400px;
             overflow-y: auto;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+            border: 2px solid #007bff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background: linear-gradient(to bottom right, #f0f9ff, #cce4ff);
         }
         .chat-message {
             margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            position: relative;
         }
         .user {
-            font-weight: bold;
-            color: #007bff;
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            text-align: right;
         }
         .bot {
-            font-weight: bold;
-            color: #28a745;
+            background-color: #28a745;
+            color: white;
+            align-self: flex-start;
+            text-align: left;
+        }
+        #user-input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #user-input:focus {
+            border-color: #0056b3;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -43,8 +82,8 @@
     <div class="chat-container">
         <h2>Medical Chatbot - Dr. Sanjay Kumar Yadav</h2>
         <div class="chat-box" id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Ask a medical question..." style="width: 100%; padding: 10px;">
-        <button onclick="sendMessage()" style="width: 100%; padding: 10px; margin-top: 10px;">Send</button>
+        <input type="text" id="user-input" placeholder="Ask a medical question...">
+        <button onclick="sendMessage()">Send</button>
     </div>
 
     <script>
@@ -76,8 +115,8 @@
         function displayMessage(message, sender) {
             const chatBox = document.getElementById('chat-box');
             const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message');
-            messageDiv.innerHTML = `<span class="${sender}">${sender === 'user' ? 'You' : 'Dr. Sanjay'}:</span> ${message}`;
+            messageDiv.classList.add('chat-message', sender);
+            messageDiv.innerHTML = `<span>${sender === 'user' ? 'You' : 'Dr. Sanjay'}:</span> ${message}`;
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
