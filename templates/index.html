@@ -1,105 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be Breast Cancer Aware by - Dr. Sanjay Kumar Yadav</title>
+    <title>Be Breast Cancer Aware by Dr. Sanjay Kumar Yadav</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #e9ecef;
-            padding: 20px;
+            background: linear-gradient(to bottom right, #fff1f4, #ffe0e9);
             margin: 0;
+            padding: 20px;
         }
+
         .chat-container {
             max-width: 600px;
             margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            border: 1px solid #dee2e6;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ff6f91;
         }
+
         h2 {
-            color: #007bff;
+            color: #d63384;
             text-align: center;
+            margin-bottom: 15px;
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+
         .chat-box {
             height: 400px;
             overflow-y: auto;
-            border: 2px solid #007bff;
+            border: 2px solid #d63384;
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 10px;
-            background: linear-gradient(to bottom right, #f0f9ff, #cce4ff);
+            background: linear-gradient(to bottom right, #fff5f8, #ffe0e4);
         }
+
         .chat-message {
             margin-bottom: 10px;
-            padding: 8px;
-            border-radius: 5px;
+            padding: 8px 12px;
+            border-radius: 8px;
             position: relative;
+            font-size: 16px;
         }
+
         .user {
-            background-color: #007bff;
+            background-color: #d63384;
             color: white;
-            align-self: flex-end;
             text-align: right;
+            align-self: flex-end;
         }
+
         .bot {
-            background-color: #28a745;
+            background-color: #4CAF50;
             color: white;
-            align-self: flex-start;
             text-align: left;
+            align-self: flex-start;
         }
+
         #user-input {
             width: calc(100% - 22px);
-            padding: 10px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
+            padding: 12px;
+            border: 2px solid #d63384;
+            border-radius: 8px;
             margin-bottom: 10px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s ease;
         }
+
         #user-input:focus {
-            border-color: #0056b3;
+            border-color: #a61d6d;
         }
+
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #007bff;
+            padding: 12px;
+            background-color: #d63384;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #a61d6d;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #888;
+            font-size: 14px;
         }
     </style>
 </head>
+
 <body>
     <div class="chat-container">
-        <h2>Be Breast Cancer aware by - Dr. Sanjay Kumar Yadav</h2>
+        <h2>Be Breast Cancer Aware</h2>
+        <div class="header">Learn more, ask questions, and raise awareness 💗</div>
+
         <div class="chat-box" id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Ask a medical question...">
+        <input type="text" id="user-input" placeholder="Ask anything about breast cancer...">
         <button onclick="sendMessage()">Send</button>
     </div>
+
+    <footer>
+        <p>For more information, visit the <a href="https://www.breastcancer.org" target="_blank" style="color: #d63384;">Breast Cancer Awareness</a> website.</p>
+    </footer>
 
     <script>
         async function sendMessage() {
             const userInput = document.getElementById('user-input').value;
             if (!userInput) return;
 
-            // Display user message in chat
             displayMessage(userInput, 'user');
 
             try {
                 const response = await fetch('/api', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: userInput }),
                 });
 
@@ -122,4 +154,5 @@
         }
     </script>
 </body>
+
 </html>
